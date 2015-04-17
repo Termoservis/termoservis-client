@@ -1,0 +1,1131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="UsersDataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="UsersDataModelStoreContainer">
+    <EntitySet Name="UserSet" EntityType="UsersDataModel.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AddressSet" EntityType="UsersDataModel.Store.AddressSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ContactInfoSet" EntityType="UsersDataModel.Store.ContactInfoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TelephoneSet" EntityType="UsersDataModel.Store.TelephoneSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CountrySet" EntityType="UsersDataModel.Store.CountrySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PlaceSet" EntityType="UsersDataModel.Store.PlaceSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PostalOfficeSet" EntityType="UsersDataModel.Store.PostalOfficeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CustomerDeviceSet" EntityType="UsersDataModel.Store.CustomerDeviceSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DeviceSet" EntityType="UsersDataModel.Store.DeviceSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WorkItemSet" EntityType="UsersDataModel.Store.WorkItemSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="JobRoleSet" EntityType="UsersDataModel.Store.JobRoleSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CountySet" EntityType="UsersDataModel.Store.CountySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WorkItemSet_Repair" EntityType="UsersDataModel.Store.WorkItemSet_Repair" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WorkItemSet_Service" EntityType="UsersDataModel.Store.WorkItemSet_Service" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserSet_Customer" EntityType="UsersDataModel.Store.UserSet_Customer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserSet_Commissioner" EntityType="UsersDataModel.Store.UserSet_Commissioner" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserSet_Manufacturer" EntityType="UsersDataModel.Store.UserSet_Manufacturer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserSet_Employee" EntityType="UsersDataModel.Store.UserSet_Employee" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ContactInfoUser" Association="UsersDataModel.Store.ContactInfoUser">
+      <End Role="ContactInfo" EntitySet="ContactInfoSet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+    <AssociationSet Name="AddressContactInfo" Association="UsersDataModel.Store.AddressContactInfo">
+      <End Role="Address" EntitySet="AddressSet" />
+      <End Role="ContactInfo" EntitySet="ContactInfoSet" />
+    </AssociationSet>
+    <AssociationSet Name="PlaceAddress" Association="UsersDataModel.Store.PlaceAddress">
+      <End Role="Place" EntitySet="PlaceSet" />
+      <End Role="Address" EntitySet="AddressSet" />
+    </AssociationSet>
+    <AssociationSet Name="TelephoneContactInfo" Association="UsersDataModel.Store.TelephoneContactInfo">
+      <End Role="Telephone" EntitySet="TelephoneSet" />
+      <End Role="ContactInfo" EntitySet="ContactInfoSet" />
+    </AssociationSet>
+    <AssociationSet Name="TelephoneCounty" Association="UsersDataModel.Store.TelephoneCounty">
+      <End Role="Telephone" EntitySet="TelephoneSet" />
+      <End Role="County" EntitySet="CountySet" />
+    </AssociationSet>
+    <AssociationSet Name="CountryCounty" Association="UsersDataModel.Store.CountryCounty">
+      <End Role="Country" EntitySet="CountrySet" />
+      <End Role="County" EntitySet="CountySet" />
+    </AssociationSet>
+    <AssociationSet Name="PostalOfficePlace" Association="UsersDataModel.Store.PostalOfficePlace">
+      <End Role="PostalOffice" EntitySet="PostalOfficeSet" />
+      <End Role="Place" EntitySet="PlaceSet" />
+    </AssociationSet>
+    <AssociationSet Name="CountyPostalOffice" Association="UsersDataModel.Store.CountyPostalOffice">
+      <End Role="County" EntitySet="CountySet" />
+      <End Role="PostalOffice" EntitySet="PostalOfficeSet" />
+    </AssociationSet>
+    <AssociationSet Name="RepairCustomerDevice" Association="UsersDataModel.Store.RepairCustomerDevice">
+      <End Role="Repair" EntitySet="WorkItemSet_Repair" />
+      <End Role="CustomerDevice" EntitySet="CustomerDeviceSet" />
+    </AssociationSet>
+    <AssociationSet Name="ServiceCustomerDevice" Association="UsersDataModel.Store.ServiceCustomerDevice">
+      <End Role="Service" EntitySet="WorkItemSet_Service" />
+      <End Role="CustomerDevice" EntitySet="CustomerDeviceSet" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerDeviceCustomer" Association="UsersDataModel.Store.CustomerDeviceCustomer">
+      <End Role="CustomerDevice" EntitySet="CustomerDeviceSet" />
+      <End Role="Customer" EntitySet="UserSet_Customer" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerDeviceCommissioner" Association="UsersDataModel.Store.CustomerDeviceCommissioner">
+      <End Role="CustomerDevice" EntitySet="CustomerDeviceSet" />
+      <End Role="Commissioner" EntitySet="UserSet_Commissioner" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerDeviceDevice" Association="UsersDataModel.Store.CustomerDeviceDevice">
+      <End Role="CustomerDevice" EntitySet="CustomerDeviceSet" />
+      <End Role="Device" EntitySet="DeviceSet" />
+    </AssociationSet>
+    <AssociationSet Name="ManufacturerDevice" Association="UsersDataModel.Store.ManufacturerDevice">
+      <End Role="Manufacturer" EntitySet="UserSet_Manufacturer" />
+      <End Role="Device" EntitySet="DeviceSet" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeWorkItem" Association="UsersDataModel.Store.EmployeeWorkItem">
+      <End Role="Employee" EntitySet="UserSet_Employee" />
+      <End Role="WorkItem" EntitySet="WorkItemSet" />
+    </AssociationSet>
+    <AssociationSet Name="JobRoleEmployee" Association="UsersDataModel.Store.JobRoleEmployee">
+      <End Role="JobRole" EntitySet="JobRoleSet" />
+      <End Role="Employee" EntitySet="UserSet_Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Repair_inherits_WorkItem" Association="UsersDataModel.Store.FK_Repair_inherits_WorkItem">
+      <End Role="WorkItem" EntitySet="WorkItemSet" />
+      <End Role="Repair" EntitySet="WorkItemSet_Repair" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Service_inherits_WorkItem" Association="UsersDataModel.Store.FK_Service_inherits_WorkItem">
+      <End Role="WorkItem" EntitySet="WorkItemSet" />
+      <End Role="Service" EntitySet="WorkItemSet_Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_inherits_User" Association="UsersDataModel.Store.FK_Customer_inherits_User">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Customer" EntitySet="UserSet_Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Commissioner_inherits_User" Association="UsersDataModel.Store.FK_Commissioner_inherits_User">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Commissioner" EntitySet="UserSet_Commissioner" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Manufacturer_inherits_User" Association="UsersDataModel.Store.FK_Manufacturer_inherits_User">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Manufacturer" EntitySet="UserSet_Manufacturer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_inherits_User" Association="UsersDataModel.Store.FK_Employee_inherits_User">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Employee" EntitySet="UserSet_Employee" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UserSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PIN" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Note" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="AddressSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StreetLine" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Place_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContactInfoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+    <Property Name="Address_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TelephoneSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsCustom" Type="bit" Nullable="false" />
+    <Property Name="ContactInfo_Id" Type="int" Nullable="false" />
+    <Property Name="County_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CountrySet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CallCode" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PlaceSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PostalOffice_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PostalOfficeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ZIP" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="County_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CustomerDeviceSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="CommissionDate" Type="datetime" Nullable="true" />
+    <Property Name="IsObsolete" Type="bit" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Note" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Customer_Id" Type="int" Nullable="false" />
+    <Property Name="Commissioner_Id" Type="int" Nullable="false" />
+    <Property Name="Device_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DeviceSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProductionYear" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Manufacturer_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkItemSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="true" />
+    <Property Name="Price" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Employee_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JobRoleSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CountySet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CallCode" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Country_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkItemSet_Repair">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="CustomerDevice_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkItemSet_Service">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="CustomerDevice_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSet_Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSet_Commissioner">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSet_Manufacturer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Website" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSet_Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="EmployedSince" Type="datetime" Nullable="true" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="JobRole_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ContactInfoUser">
+    <End Role="ContactInfo" Type="UsersDataModel.Store.ContactInfoSet" Multiplicity="*" />
+    <End Role="User" Type="UsersDataModel.Store.UserSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContactInfo">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AddressContactInfo">
+    <End Role="Address" Type="UsersDataModel.Store.AddressSet" Multiplicity="1" />
+    <End Role="ContactInfo" Type="UsersDataModel.Store.ContactInfoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContactInfo">
+        <PropertyRef Name="Address_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlaceAddress">
+    <End Role="Place" Type="UsersDataModel.Store.PlaceSet" Multiplicity="1" />
+    <End Role="Address" Type="UsersDataModel.Store.AddressSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="Place_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TelephoneContactInfo">
+    <End Role="Telephone" Type="UsersDataModel.Store.TelephoneSet" Multiplicity="*" />
+    <End Role="ContactInfo" Type="UsersDataModel.Store.ContactInfoSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ContactInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Telephone">
+        <PropertyRef Name="ContactInfo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TelephoneCounty">
+    <End Role="Telephone" Type="UsersDataModel.Store.TelephoneSet" Multiplicity="*" />
+    <End Role="County" Type="UsersDataModel.Store.CountySet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="County">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Telephone">
+        <PropertyRef Name="County_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CountryCounty">
+    <End Role="Country" Type="UsersDataModel.Store.CountrySet" Multiplicity="1" />
+    <End Role="County" Type="UsersDataModel.Store.CountySet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="County">
+        <PropertyRef Name="Country_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PostalOfficePlace">
+    <End Role="PostalOffice" Type="UsersDataModel.Store.PostalOfficeSet" Multiplicity="1" />
+    <End Role="Place" Type="UsersDataModel.Store.PlaceSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PostalOffice">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Place">
+        <PropertyRef Name="PostalOffice_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CountyPostalOffice">
+    <End Role="County" Type="UsersDataModel.Store.CountySet" Multiplicity="1" />
+    <End Role="PostalOffice" Type="UsersDataModel.Store.PostalOfficeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="County">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostalOffice">
+        <PropertyRef Name="County_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RepairCustomerDevice">
+    <End Role="Repair" Type="UsersDataModel.Store.WorkItemSet_Repair" Multiplicity="*" />
+    <End Role="CustomerDevice" Type="UsersDataModel.Store.CustomerDeviceSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerDevice">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Repair">
+        <PropertyRef Name="CustomerDevice_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ServiceCustomerDevice">
+    <End Role="Service" Type="UsersDataModel.Store.WorkItemSet_Service" Multiplicity="*" />
+    <End Role="CustomerDevice" Type="UsersDataModel.Store.CustomerDeviceSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerDevice">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="CustomerDevice_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CustomerDeviceCustomer">
+    <End Role="CustomerDevice" Type="UsersDataModel.Store.CustomerDeviceSet" Multiplicity="*" />
+    <End Role="Customer" Type="UsersDataModel.Store.UserSet_Customer" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CustomerDevice">
+        <PropertyRef Name="Customer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CustomerDeviceCommissioner">
+    <End Role="CustomerDevice" Type="UsersDataModel.Store.CustomerDeviceSet" Multiplicity="*" />
+    <End Role="Commissioner" Type="UsersDataModel.Store.UserSet_Commissioner" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Commissioner">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CustomerDevice">
+        <PropertyRef Name="Commissioner_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CustomerDeviceDevice">
+    <End Role="CustomerDevice" Type="UsersDataModel.Store.CustomerDeviceSet" Multiplicity="*" />
+    <End Role="Device" Type="UsersDataModel.Store.DeviceSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Device">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CustomerDevice">
+        <PropertyRef Name="Device_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ManufacturerDevice">
+    <End Role="Manufacturer" Type="UsersDataModel.Store.UserSet_Manufacturer" Multiplicity="1" />
+    <End Role="Device" Type="UsersDataModel.Store.DeviceSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Device">
+        <PropertyRef Name="Manufacturer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeWorkItem">
+    <End Role="Employee" Type="UsersDataModel.Store.UserSet_Employee" Multiplicity="1" />
+    <End Role="WorkItem" Type="UsersDataModel.Store.WorkItemSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WorkItem">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="JobRoleEmployee">
+    <End Role="JobRole" Type="UsersDataModel.Store.JobRoleSet" Multiplicity="1" />
+    <End Role="Employee" Type="UsersDataModel.Store.UserSet_Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="JobRole_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Repair_inherits_WorkItem">
+    <End Role="WorkItem" Type="UsersDataModel.Store.WorkItemSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Repair" Type="UsersDataModel.Store.WorkItemSet_Repair" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="WorkItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Repair">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Service_inherits_WorkItem">
+    <End Role="WorkItem" Type="UsersDataModel.Store.WorkItemSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Service" Type="UsersDataModel.Store.WorkItemSet_Service" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="WorkItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_inherits_User">
+    <End Role="User" Type="UsersDataModel.Store.UserSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Customer" Type="UsersDataModel.Store.UserSet_Customer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Commissioner_inherits_User">
+    <End Role="User" Type="UsersDataModel.Store.UserSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Commissioner" Type="UsersDataModel.Store.UserSet_Commissioner" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Commissioner">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Manufacturer_inherits_User">
+    <End Role="User" Type="UsersDataModel.Store.UserSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Manufacturer" Type="UsersDataModel.Store.UserSet_Manufacturer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Manufacturer">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_inherits_User">
+    <End Role="User" Type="UsersDataModel.Store.UserSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Employee" Type="UsersDataModel.Store.UserSet_Employee" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="UsersDataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="UsersDataModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserSet" EntityType="UsersDataModel.User" />
+          <EntitySet Name="AddressSet" EntityType="UsersDataModel.Address" />
+          <EntitySet Name="ContactInfoSet" EntityType="UsersDataModel.ContactInfo" />
+          <EntitySet Name="TelephoneSet" EntityType="UsersDataModel.Telephone" />
+          <EntitySet Name="CountrySet" EntityType="UsersDataModel.Country" />
+          <EntitySet Name="PlaceSet" EntityType="UsersDataModel.Place" />
+          <EntitySet Name="PostalOfficeSet" EntityType="UsersDataModel.PostalOffice" />
+          <EntitySet Name="CustomerDeviceSet" EntityType="UsersDataModel.CustomerDevice" />
+          <EntitySet Name="DeviceSet" EntityType="UsersDataModel.Device" />
+          <EntitySet Name="WorkItemSet" EntityType="UsersDataModel.WorkItem" />
+          <EntitySet Name="JobRoleSet" EntityType="UsersDataModel.JobRole" />
+          <EntitySet Name="CountySet" EntityType="UsersDataModel.County" />
+          <AssociationSet Name="ContactInfoUser" Association="UsersDataModel.ContactInfoUser">
+            <End Role="ContactInfo" EntitySet="ContactInfoSet" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="AddressContactInfo" Association="UsersDataModel.AddressContactInfo">
+            <End Role="Address" EntitySet="AddressSet" />
+            <End Role="ContactInfo" EntitySet="ContactInfoSet" />
+          </AssociationSet>
+          <AssociationSet Name="PlaceAddress" Association="UsersDataModel.PlaceAddress">
+            <End Role="Place" EntitySet="PlaceSet" />
+            <End Role="Address" EntitySet="AddressSet" />
+          </AssociationSet>
+          <AssociationSet Name="TelephoneContactInfo" Association="UsersDataModel.TelephoneContactInfo">
+            <End Role="Telephone" EntitySet="TelephoneSet" />
+            <End Role="ContactInfo" EntitySet="ContactInfoSet" />
+          </AssociationSet>
+          <AssociationSet Name="TelephoneCounty" Association="UsersDataModel.TelephoneCounty">
+            <End Role="Telephone" EntitySet="TelephoneSet" />
+            <End Role="County" EntitySet="CountySet" />
+          </AssociationSet>
+          <AssociationSet Name="CountryCounty" Association="UsersDataModel.CountryCounty">
+            <End Role="Country" EntitySet="CountrySet" />
+            <End Role="County" EntitySet="CountySet" />
+          </AssociationSet>
+          <AssociationSet Name="PostalOfficePlace" Association="UsersDataModel.PostalOfficePlace">
+            <End Role="PostalOffice" EntitySet="PostalOfficeSet" />
+            <End Role="Place" EntitySet="PlaceSet" />
+          </AssociationSet>
+          <AssociationSet Name="CountyPostalOffice" Association="UsersDataModel.CountyPostalOffice">
+            <End Role="County" EntitySet="CountySet" />
+            <End Role="PostalOffice" EntitySet="PostalOfficeSet" />
+          </AssociationSet>
+          <AssociationSet Name="RepairCustomerDevice" Association="UsersDataModel.RepairCustomerDevice">
+            <End Role="Repair" EntitySet="WorkItemSet" />
+            <End Role="CustomerDevice" EntitySet="CustomerDeviceSet" />
+          </AssociationSet>
+          <AssociationSet Name="ServiceCustomerDevice" Association="UsersDataModel.ServiceCustomerDevice">
+            <End Role="Service" EntitySet="WorkItemSet" />
+            <End Role="CustomerDevice" EntitySet="CustomerDeviceSet" />
+          </AssociationSet>
+          <AssociationSet Name="CustomerDeviceCustomer" Association="UsersDataModel.CustomerDeviceCustomer">
+            <End Role="CustomerDevice" EntitySet="CustomerDeviceSet" />
+            <End Role="Customer" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="CustomerDeviceCommissioner" Association="UsersDataModel.CustomerDeviceCommissioner">
+            <End Role="CustomerDevice" EntitySet="CustomerDeviceSet" />
+            <End Role="Commissioner" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="CustomerDeviceDevice" Association="UsersDataModel.CustomerDeviceDevice">
+            <End Role="CustomerDevice" EntitySet="CustomerDeviceSet" />
+            <End Role="Device" EntitySet="DeviceSet" />
+          </AssociationSet>
+          <AssociationSet Name="ManufacturerDevice" Association="UsersDataModel.ManufacturerDevice">
+            <End Role="Manufacturer" EntitySet="UserSet" />
+            <End Role="Device" EntitySet="DeviceSet" />
+          </AssociationSet>
+          <AssociationSet Name="EmployeeWorkItem" Association="UsersDataModel.EmployeeWorkItem">
+            <End Role="Employee" EntitySet="UserSet" />
+            <End Role="WorkItem" EntitySet="WorkItemSet" />
+          </AssociationSet>
+          <AssociationSet Name="JobRoleEmployee" Association="UsersDataModel.JobRoleEmployee">
+            <End Role="JobRole" EntitySet="JobRoleSet" />
+            <End Role="Employee" EntitySet="UserSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EnumType Name="UserTypes" IsFlags="true">
+        <Member Name="NotSet" Value="0" />
+          <Member Name="Private" Value="1" />
+          <Member Name="Entity" Value="2" />
+        </EnumType>
+        <EntityType Name="User" Abstract="true">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="PIN" Nullable="false" />
+          <Property Type="UsersDataModel.UserTypes" Name="Type" Nullable="false" />
+          <Property Type="String" Name="Note" Nullable="true" />
+          <NavigationProperty Name="ContactInfo" Relationship="UsersDataModel.ContactInfoUser" FromRole="User" ToRole="ContactInfo" />
+        </EntityType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="StreetLine" Nullable="false" />
+          <NavigationProperty Name="ContactInfo" Relationship="UsersDataModel.AddressContactInfo" FromRole="Address" ToRole="ContactInfo" />
+          <NavigationProperty Name="Place" Relationship="UsersDataModel.PlaceAddress" FromRole="Address" ToRole="Place" />
+        </EntityType>
+        <EntityType Name="ContactInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Email" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="UsersDataModel.ContactInfoUser" FromRole="ContactInfo" ToRole="User" />
+          <NavigationProperty Name="Address" Relationship="UsersDataModel.AddressContactInfo" FromRole="ContactInfo" ToRole="Address" />
+          <NavigationProperty Name="Telephone" Relationship="UsersDataModel.TelephoneContactInfo" FromRole="ContactInfo" ToRole="Telephone" />
+        </EntityType>
+        <EntityType Name="Telephone">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Number" Nullable="false" />
+          <Property Type="Boolean" Name="IsCustom" Nullable="false" />
+          <NavigationProperty Name="ContactInfo" Relationship="UsersDataModel.TelephoneContactInfo" FromRole="Telephone" ToRole="ContactInfo" />
+          <NavigationProperty Name="County" Relationship="UsersDataModel.TelephoneCounty" FromRole="Telephone" ToRole="County" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CallCode" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <NavigationProperty Name="County" Relationship="UsersDataModel.CountryCounty" FromRole="Country" ToRole="County" />
+        </EntityType>
+        <EntityType Name="Place">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="UsersDataModel.PlaceAddress" FromRole="Place" ToRole="Address" />
+          <NavigationProperty Name="PostalOffice" Relationship="UsersDataModel.PostalOfficePlace" FromRole="Place" ToRole="PostalOffice" />
+        </EntityType>
+        <EntityType Name="PostalOffice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="ZIP" Nullable="false" />
+          <NavigationProperty Name="Place" Relationship="UsersDataModel.PostalOfficePlace" FromRole="PostalOffice" ToRole="Place" />
+          <NavigationProperty Name="County" Relationship="UsersDataModel.CountyPostalOffice" FromRole="PostalOffice" ToRole="County" />
+        </EntityType>
+        <EntityType Name="CustomerDevice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="DateTime" Name="CommissionDate" Nullable="true" />
+          <Property Type="Boolean" Name="IsObsolete" Nullable="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Note" Nullable="true" />
+          <NavigationProperty Name="Repair" Relationship="UsersDataModel.RepairCustomerDevice" FromRole="CustomerDevice" ToRole="Repair" />
+          <NavigationProperty Name="Service" Relationship="UsersDataModel.ServiceCustomerDevice" FromRole="CustomerDevice" ToRole="Service" />
+          <NavigationProperty Name="Customer" Relationship="UsersDataModel.CustomerDeviceCustomer" FromRole="CustomerDevice" ToRole="Customer" />
+          <NavigationProperty Name="Commissioner" Relationship="UsersDataModel.CustomerDeviceCommissioner" FromRole="CustomerDevice" ToRole="Commissioner" />
+          <NavigationProperty Name="Device" Relationship="UsersDataModel.CustomerDeviceDevice" FromRole="CustomerDevice" ToRole="Device" />
+        </EntityType>
+        <EntityType Name="Device">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="ProductionYear" Nullable="false" />
+          <NavigationProperty Name="CustomerDevice" Relationship="UsersDataModel.CustomerDeviceDevice" FromRole="Device" ToRole="CustomerDevice" />
+          <NavigationProperty Name="Manufacturer" Relationship="UsersDataModel.ManufacturerDevice" FromRole="Device" ToRole="Manufacturer" />
+        </EntityType>
+        <EntityType Name="Manufacturer" BaseType="UsersDataModel.User">
+          <Property Type="String" Name="Website" Nullable="false" />
+          <NavigationProperty Name="Device" Relationship="UsersDataModel.ManufacturerDevice" FromRole="Manufacturer" ToRole="Device" />
+        </EntityType>
+        <EntityType Name="Repair" BaseType="UsersDataModel.WorkItem">
+          <NavigationProperty Name="CustomerDevice" Relationship="UsersDataModel.RepairCustomerDevice" FromRole="Repair" ToRole="CustomerDevice" />
+        </EntityType>
+        <EntityType Name="Service" BaseType="UsersDataModel.WorkItem">
+          <NavigationProperty Name="CustomerDevice" Relationship="UsersDataModel.ServiceCustomerDevice" FromRole="Service" ToRole="CustomerDevice" />
+        </EntityType>
+        <EntityType Name="WorkItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Date" Nullable="true" />
+          <Property Type="String" Name="Price" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="UsersDataModel.EmployeeWorkItem" FromRole="WorkItem" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Customer" BaseType="UsersDataModel.User">
+          <NavigationProperty Name="CustomerDevice" Relationship="UsersDataModel.CustomerDeviceCustomer" FromRole="Customer" ToRole="CustomerDevice" />
+        </EntityType>
+        <EntityType Name="Employee" BaseType="UsersDataModel.User">
+          <Property Type="DateTime" Name="EmployedSince" Nullable="true" />
+          <NavigationProperty Name="WorkItem" Relationship="UsersDataModel.EmployeeWorkItem" FromRole="Employee" ToRole="WorkItem" />
+          <NavigationProperty Name="JobRole" Relationship="UsersDataModel.JobRoleEmployee" FromRole="Employee" ToRole="JobRole" />
+        </EntityType>
+        <EntityType Name="JobRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="UsersDataModel.JobRoleEmployee" FromRole="JobRole" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Commissioner" BaseType="UsersDataModel.User">
+          <NavigationProperty Name="CustomerDevice" Relationship="UsersDataModel.CustomerDeviceCommissioner" FromRole="Commissioner" ToRole="CustomerDevice" />
+        </EntityType>
+        <EntityType Name="County">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="CallCode" Nullable="false" />
+          <NavigationProperty Name="Telephone" Relationship="UsersDataModel.TelephoneCounty" FromRole="County" ToRole="Telephone" />
+          <NavigationProperty Name="Country" Relationship="UsersDataModel.CountryCounty" FromRole="County" ToRole="Country" />
+          <NavigationProperty Name="PostalOffice" Relationship="UsersDataModel.CountyPostalOffice" FromRole="County" ToRole="PostalOffice" />
+        </EntityType>
+        <Association Name="ContactInfoUser">
+          <End Type="UsersDataModel.ContactInfo" Role="ContactInfo" Multiplicity="1" />
+          <End Type="UsersDataModel.User" Role="User" Multiplicity="1" />
+        </Association>
+        <Association Name="AddressContactInfo">
+          <End Type="UsersDataModel.Address" Role="Address" Multiplicity="1" />
+          <End Type="UsersDataModel.ContactInfo" Role="ContactInfo" Multiplicity="*" />
+        </Association>
+        <Association Name="PlaceAddress">
+          <End Type="UsersDataModel.Place" Role="Place" Multiplicity="1" />
+          <End Type="UsersDataModel.Address" Role="Address" Multiplicity="*" />
+        </Association>
+        <Association Name="TelephoneContactInfo">
+          <End Type="UsersDataModel.Telephone" Role="Telephone" Multiplicity="*" />
+          <End Type="UsersDataModel.ContactInfo" Role="ContactInfo" Multiplicity="1" />
+        </Association>
+        <Association Name="TelephoneCounty">
+          <End Type="UsersDataModel.Telephone" Role="Telephone" Multiplicity="*" />
+          <End Type="UsersDataModel.County" Role="County" Multiplicity="1" />
+        </Association>
+        <Association Name="CountryCounty">
+          <End Type="UsersDataModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="UsersDataModel.County" Role="County" Multiplicity="*" />
+        </Association>
+        <Association Name="PostalOfficePlace">
+          <End Type="UsersDataModel.PostalOffice" Role="PostalOffice" Multiplicity="1" />
+          <End Type="UsersDataModel.Place" Role="Place" Multiplicity="*" />
+        </Association>
+        <Association Name="CountyPostalOffice">
+          <End Type="UsersDataModel.County" Role="County" Multiplicity="1" />
+          <End Type="UsersDataModel.PostalOffice" Role="PostalOffice" Multiplicity="*" />
+        </Association>
+        <Association Name="RepairCustomerDevice">
+          <End Type="UsersDataModel.Repair" Role="Repair" Multiplicity="*" />
+          <End Type="UsersDataModel.CustomerDevice" Role="CustomerDevice" Multiplicity="1" />
+        </Association>
+        <Association Name="ServiceCustomerDevice">
+          <End Type="UsersDataModel.Service" Role="Service" Multiplicity="*" />
+          <End Type="UsersDataModel.CustomerDevice" Role="CustomerDevice" Multiplicity="1" />
+        </Association>
+        <Association Name="CustomerDeviceCustomer">
+          <End Type="UsersDataModel.CustomerDevice" Role="CustomerDevice" Multiplicity="*" />
+          <End Type="UsersDataModel.Customer" Role="Customer" Multiplicity="1" />
+        </Association>
+        <Association Name="CustomerDeviceCommissioner">
+          <End Type="UsersDataModel.CustomerDevice" Role="CustomerDevice" Multiplicity="*" />
+          <End Type="UsersDataModel.Commissioner" Role="Commissioner" Multiplicity="1" />
+        </Association>
+        <Association Name="CustomerDeviceDevice">
+          <End Type="UsersDataModel.CustomerDevice" Role="CustomerDevice" Multiplicity="*" />
+          <End Type="UsersDataModel.Device" Role="Device" Multiplicity="1" />
+        </Association>
+        <Association Name="ManufacturerDevice">
+          <End Type="UsersDataModel.Manufacturer" Role="Manufacturer" Multiplicity="1" />
+          <End Type="UsersDataModel.Device" Role="Device" Multiplicity="*" />
+        </Association>
+        <Association Name="EmployeeWorkItem">
+          <End Type="UsersDataModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="UsersDataModel.WorkItem" Role="WorkItem" Multiplicity="*" />
+        </Association>
+        <Association Name="JobRoleEmployee">
+          <End Type="UsersDataModel.JobRole" Role="JobRole" Multiplicity="1" />
+          <End Type="UsersDataModel.Employee" Role="Employee" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UsersDataModelStoreContainer" CdmEntityContainer="UsersDataModelContainer">
+    <EntitySetMapping Name="UserSet">
+      <EntityTypeMapping TypeName="IsTypeOf(UsersDataModel.User)">
+        <MappingFragment StoreEntitySet="UserSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PIN" ColumnName="PIN" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(UsersDataModel.Customer)">
+        <MappingFragment StoreEntitySet="UserSet_Customer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(UsersDataModel.Commissioner)">
+        <MappingFragment StoreEntitySet="UserSet_Commissioner">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(UsersDataModel.Manufacturer)">
+        <MappingFragment StoreEntitySet="UserSet_Manufacturer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(UsersDataModel.Employee)">
+        <MappingFragment StoreEntitySet="UserSet_Employee">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EmployedSince" ColumnName="EmployedSince" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AddressSet">
+      <EntityTypeMapping TypeName="IsTypeOf(UsersDataModel.Address)">
+        <MappingFragment StoreEntitySet="AddressSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StreetLine" ColumnName="StreetLine" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContactInfoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(UsersDataModel.ContactInfo)">
+        <MappingFragment StoreEntitySet="ContactInfoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TelephoneSet">
+      <EntityTypeMapping TypeName="IsTypeOf(UsersDataModel.Telephone)">
+        <MappingFragment StoreEntitySet="TelephoneSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="IsCustom" ColumnName="IsCustom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CountrySet">
+      <EntityTypeMapping TypeName="IsTypeOf(UsersDataModel.Country)">
+        <MappingFragment StoreEntitySet="CountrySet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CallCode" ColumnName="CallCode" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlaceSet">
+      <EntityTypeMapping TypeName="IsTypeOf(UsersDataModel.Place)">
+        <MappingFragment StoreEntitySet="PlaceSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PostalOfficeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(UsersDataModel.PostalOffice)">
+        <MappingFragment StoreEntitySet="PostalOfficeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerDeviceSet">
+      <EntityTypeMapping TypeName="IsTypeOf(UsersDataModel.CustomerDevice)">
+        <MappingFragment StoreEntitySet="CustomerDeviceSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CommissionDate" ColumnName="CommissionDate" />
+          <ScalarProperty Name="IsObsolete" ColumnName="IsObsolete" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeviceSet">
+      <EntityTypeMapping TypeName="IsTypeOf(UsersDataModel.Device)">
+        <MappingFragment StoreEntitySet="DeviceSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ProductionYear" ColumnName="ProductionYear" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkItemSet">
+      <EntityTypeMapping TypeName="IsTypeOf(UsersDataModel.WorkItem)">
+        <MappingFragment StoreEntitySet="WorkItemSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(UsersDataModel.Repair)">
+        <MappingFragment StoreEntitySet="WorkItemSet_Repair">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(UsersDataModel.Service)">
+        <MappingFragment StoreEntitySet="WorkItemSet_Service">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobRoleSet">
+      <EntityTypeMapping TypeName="IsTypeOf(UsersDataModel.JobRole)">
+        <MappingFragment StoreEntitySet="JobRoleSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CountySet">
+      <EntityTypeMapping TypeName="IsTypeOf(UsersDataModel.County)">
+        <MappingFragment StoreEntitySet="CountySet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CallCode" ColumnName="CallCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ContactInfoUser" TypeName="UsersDataModel.ContactInfoUser" StoreEntitySet="ContactInfoSet">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="ContactInfo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AddressContactInfo" TypeName="UsersDataModel.AddressContactInfo" StoreEntitySet="ContactInfoSet">
+      <EndProperty Name="Address">
+        <ScalarProperty Name="Id" ColumnName="Address_Id" />
+      </EndProperty>
+      <EndProperty Name="ContactInfo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PlaceAddress" TypeName="UsersDataModel.PlaceAddress" StoreEntitySet="AddressSet">
+      <EndProperty Name="Place">
+        <ScalarProperty Name="Id" ColumnName="Place_Id" />
+      </EndProperty>
+      <EndProperty Name="Address">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TelephoneContactInfo" TypeName="UsersDataModel.TelephoneContactInfo" StoreEntitySet="TelephoneSet">
+      <EndProperty Name="ContactInfo">
+        <ScalarProperty Name="Id" ColumnName="ContactInfo_Id" />
+      </EndProperty>
+      <EndProperty Name="Telephone">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TelephoneCounty" TypeName="UsersDataModel.TelephoneCounty" StoreEntitySet="TelephoneSet">
+      <EndProperty Name="County">
+        <ScalarProperty Name="Id" ColumnName="County_Id" />
+      </EndProperty>
+      <EndProperty Name="Telephone">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CountryCounty" TypeName="UsersDataModel.CountryCounty" StoreEntitySet="CountySet">
+      <EndProperty Name="Country">
+        <ScalarProperty Name="Id" ColumnName="Country_Id" />
+      </EndProperty>
+      <EndProperty Name="County">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PostalOfficePlace" TypeName="UsersDataModel.PostalOfficePlace" StoreEntitySet="PlaceSet">
+      <EndProperty Name="PostalOffice">
+        <ScalarProperty Name="Id" ColumnName="PostalOffice_Id" />
+      </EndProperty>
+      <EndProperty Name="Place">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CountyPostalOffice" TypeName="UsersDataModel.CountyPostalOffice" StoreEntitySet="PostalOfficeSet">
+      <EndProperty Name="County">
+        <ScalarProperty Name="Id" ColumnName="County_Id" />
+      </EndProperty>
+      <EndProperty Name="PostalOffice">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RepairCustomerDevice" TypeName="UsersDataModel.RepairCustomerDevice" StoreEntitySet="WorkItemSet_Repair">
+      <EndProperty Name="CustomerDevice">
+        <ScalarProperty Name="Id" ColumnName="CustomerDevice_Id" />
+      </EndProperty>
+      <EndProperty Name="Repair">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ServiceCustomerDevice" TypeName="UsersDataModel.ServiceCustomerDevice" StoreEntitySet="WorkItemSet_Service">
+      <EndProperty Name="CustomerDevice">
+        <ScalarProperty Name="Id" ColumnName="CustomerDevice_Id" />
+      </EndProperty>
+      <EndProperty Name="Service">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CustomerDeviceCustomer" TypeName="UsersDataModel.CustomerDeviceCustomer" StoreEntitySet="CustomerDeviceSet">
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="Id" ColumnName="Customer_Id" />
+      </EndProperty>
+      <EndProperty Name="CustomerDevice">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CustomerDeviceCommissioner" TypeName="UsersDataModel.CustomerDeviceCommissioner" StoreEntitySet="CustomerDeviceSet">
+      <EndProperty Name="Commissioner">
+        <ScalarProperty Name="Id" ColumnName="Commissioner_Id" />
+      </EndProperty>
+      <EndProperty Name="CustomerDevice">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CustomerDeviceDevice" TypeName="UsersDataModel.CustomerDeviceDevice" StoreEntitySet="CustomerDeviceSet">
+      <EndProperty Name="Device">
+        <ScalarProperty Name="Id" ColumnName="Device_Id" />
+      </EndProperty>
+      <EndProperty Name="CustomerDevice">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ManufacturerDevice" TypeName="UsersDataModel.ManufacturerDevice" StoreEntitySet="DeviceSet">
+      <EndProperty Name="Manufacturer">
+        <ScalarProperty Name="Id" ColumnName="Manufacturer_Id" />
+      </EndProperty>
+      <EndProperty Name="Device">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmployeeWorkItem" TypeName="UsersDataModel.EmployeeWorkItem" StoreEntitySet="WorkItemSet">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="Id" ColumnName="Employee_Id" />
+      </EndProperty>
+      <EndProperty Name="WorkItem">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="JobRoleEmployee" TypeName="UsersDataModel.JobRoleEmployee" StoreEntitySet="UserSet_Employee">
+      <EndProperty Name="JobRole">
+        <ScalarProperty Name="Id" ColumnName="JobRole_Id" />
+      </EndProperty>
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FiscalizationDataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="FiscalizationDataModelStoreContainer">
+    <EntitySet Name="ItemEntitySet" EntityType="FiscalizationDataModel.Store.ItemEntitySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AccountEntitySet" EntityType="FiscalizationDataModel.Store.AccountEntitySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CustomerEntitySet" EntityType="FiscalizationDataModel.Store.CustomerEntitySet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ItemEntityAccountEntity" Association="FiscalizationDataModel.Store.ItemEntityAccountEntity">
+      <End Role="ItemEntity" EntitySet="ItemEntitySet" />
+      <End Role="AccountEntity" EntitySet="AccountEntitySet" />
+    </AssociationSet>
+    <AssociationSet Name="AccountEntityCustomerEntity" Association="FiscalizationDataModel.Store.AccountEntityCustomerEntity">
+      <End Role="AccountEntity" EntitySet="AccountEntitySet" />
+      <End Role="CustomerEntity" EntitySet="CustomerEntitySet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ItemEntitySet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Discount" Type="float" Nullable="false" />
+    <Property Name="DiscountAmount" Type="float" Nullable="false" />
+    <Property Name="TotalPrice" Type="float" Nullable="false" />
+    <Property Name="TotalPriceValue" Type="float" Nullable="false" />
+    <Property Name="AccountEntity_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AccountEntitySet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StoreName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TreasuryName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="CancellationAccountNumber" Type="int" Nullable="false" />
+    <Property Name="CancellationAccountDate" Type="datetime" Nullable="true" />
+    <Property Name="PaymentMethod" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CustomerEntity_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CustomerEntitySet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PIN" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ZIP" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="City" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="ItemEntityAccountEntity">
+    <End Role="ItemEntity" Type="FiscalizationDataModel.Store.ItemEntitySet" Multiplicity="*" />
+    <End Role="AccountEntity" Type="FiscalizationDataModel.Store.AccountEntitySet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="AccountEntity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ItemEntity">
+        <PropertyRef Name="AccountEntity_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AccountEntityCustomerEntity">
+    <End Role="AccountEntity" Type="FiscalizationDataModel.Store.AccountEntitySet" Multiplicity="*" />
+    <End Role="CustomerEntity" Type="FiscalizationDataModel.Store.CustomerEntitySet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerEntity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AccountEntity">
+        <PropertyRef Name="CustomerEntity_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="FiscalizationDataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="FiscalizationDataModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ItemEntitySet" EntityType="FiscalizationDataModel.ItemEntity" />
+          <EntitySet Name="AccountEntitySet" EntityType="FiscalizationDataModel.AccountEntity" />
+          <EntitySet Name="CustomerEntitySet" EntityType="FiscalizationDataModel.CustomerEntity" />
+          <AssociationSet Name="ItemEntityAccountEntity" Association="FiscalizationDataModel.ItemEntityAccountEntity">
+            <End Role="ItemEntity" EntitySet="ItemEntitySet" />
+            <End Role="AccountEntity" EntitySet="AccountEntitySet" />
+          </AssociationSet>
+          <AssociationSet Name="AccountEntityCustomerEntity" Association="FiscalizationDataModel.AccountEntityCustomerEntity">
+            <End Role="AccountEntity" EntitySet="AccountEntitySet" />
+            <End Role="CustomerEntity" EntitySet="CustomerEntitySet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ItemEntity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="FiscalizationDataModel.ItemTypes" Name="Type" Nullable="false" />
+          <Property Type="Double" Name="Amount" Nullable="false" />
+          <Property Type="Double" Name="Price" Nullable="false" />
+          <Property Type="Double" Name="Discount" Nullable="false" />
+          <Property Type="Double" Name="DiscountAmount" Nullable="false" />
+          <Property Type="Double" Name="TotalPrice" Nullable="false" />
+          <Property Type="Double" Name="TotalPriceValue" Nullable="false" />
+          <NavigationProperty Name="AccountEntity" Relationship="FiscalizationDataModel.ItemEntityAccountEntity" FromRole="ItemEntity" ToRole="AccountEntity" />
+        </EntityType>
+        <EntityType Name="AccountEntity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="StoreName" Nullable="false" />
+          <Property Type="String" Name="TreasuryName" Nullable="false" />
+          <Property Type="Int32" Name="Number" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="Int32" Name="CancellationAccountNumber" Nullable="false" />
+          <Property Type="DateTime" Name="CancellationAccountDate" Nullable="true" />
+          <Property Type="String" Name="PaymentMethod" Nullable="false" />
+          <NavigationProperty Name="ItemEntities" Relationship="FiscalizationDataModel.ItemEntityAccountEntity" FromRole="AccountEntity" ToRole="ItemEntity" />
+          <NavigationProperty Name="CustomerEntity" Relationship="FiscalizationDataModel.AccountEntityCustomerEntity" FromRole="AccountEntity" ToRole="CustomerEntity" />
+        </EntityType>
+        <EntityType Name="CustomerEntity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" />
+          <Property Type="String" Name="PIN" Nullable="false" />
+          <Property Type="String" Name="Address" Nullable="false" />
+          <Property Type="String" Name="ZIP" Nullable="false" />
+          <Property Type="String" Name="City" Nullable="false" />
+          <NavigationProperty Name="AccountEntity" Relationship="FiscalizationDataModel.AccountEntityCustomerEntity" FromRole="CustomerEntity" ToRole="AccountEntity" />
+        </EntityType>
+        <Association Name="ItemEntityAccountEntity">
+          <End Type="FiscalizationDataModel.ItemEntity" Role="ItemEntity" Multiplicity="*" />
+          <End Type="FiscalizationDataModel.AccountEntity" Role="AccountEntity" Multiplicity="1" />
+        </Association>
+        <Association Name="AccountEntityCustomerEntity">
+          <End Type="FiscalizationDataModel.AccountEntity" Role="AccountEntity" Multiplicity="*" />
+          <End Type="FiscalizationDataModel.CustomerEntity" Role="CustomerEntity" Multiplicity="1" />
+        </Association>
+        <EnumType Name="ItemTypes" IsFlags="true">
+          <Member Name="NotSet" Value="0" />
+          <Member Name="Goods" Value="1" />
+          <Member Name="Service" Value="2" />
+        </EnumType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FiscalizationDataModelStoreContainer" CdmEntityContainer="FiscalizationDataModelContainer">
+    <EntitySetMapping Name="ItemEntitySet">
+      <EntityTypeMapping TypeName="IsTypeOf(FiscalizationDataModel.ItemEntity)">
+        <MappingFragment StoreEntitySet="ItemEntitySet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="TotalPriceValue" ColumnName="TotalPriceValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccountEntitySet">
+      <EntityTypeMapping TypeName="IsTypeOf(FiscalizationDataModel.AccountEntity)">
+        <MappingFragment StoreEntitySet="AccountEntitySet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+          <ScalarProperty Name="TreasuryName" ColumnName="TreasuryName" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="CancellationAccountNumber" ColumnName="CancellationAccountNumber" />
+          <ScalarProperty Name="CancellationAccountDate" ColumnName="CancellationAccountDate" />
+          <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerEntitySet">
+      <EntityTypeMapping TypeName="IsTypeOf(FiscalizationDataModel.CustomerEntity)">
+        <MappingFragment StoreEntitySet="CustomerEntitySet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="PIN" ColumnName="PIN" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+          <ScalarProperty Name="City" ColumnName="City" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ItemEntityAccountEntity" TypeName="FiscalizationDataModel.ItemEntityAccountEntity" StoreEntitySet="ItemEntitySet">
+      <EndProperty Name="AccountEntity">
+        <ScalarProperty Name="Id" ColumnName="AccountEntity_Id" />
+      </EndProperty>
+      <EndProperty Name="ItemEntity">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AccountEntityCustomerEntity" TypeName="FiscalizationDataModel.AccountEntityCustomerEntity" StoreEntitySet="AccountEntitySet">
+      <EndProperty Name="CustomerEntity">
+        <ScalarProperty Name="Id" ColumnName="CustomerEntity_Id" />
+      </EndProperty>
+      <EndProperty Name="AccountEntity">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

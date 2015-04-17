@@ -1,0 +1,12 @@
+﻿<mahapps:MetroWindow x:Class="TermoservisClient.Windows.Fiscalization.Window.FiscalizationWindow"
+					 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					 xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
+					 xmlns:fiscalizationhome="clr-namespace:TermoservisClient.Windows.Fiscalization.Home"
+					 Icon="/Resources/Images/Fiscalization White.png"
+					 Title="Fiskalizacija - Termoservis" Height="500" Width="550"
+					 SaveWindowPosition="True" GlowBrush="{StaticResource AccentColorBrush}">
+	<Grid>
+		<fiscalizationhome:FiscalizationHomeView />
+	</Grid>
+</mahapps:MetroWindow>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="24e498750c1d4df18750127125df8177" Name="Diagram" ZoomLevel="69" ShowGrid="true" >
+        <EntityTypeShape EntityType="UsersDataModel.User" Width="1.5" PointX="7.125" PointY="4.875" />
+        <EntityTypeShape EntityType="UsersDataModel.Address" Width="1.5" PointX="11.75" PointY="4.875" />
+        <EntityTypeShape EntityType="UsersDataModel.ContactInfo" Width="1.5" PointX="9.5" PointY="4.875" />
+        <EntityTypeShape EntityType="UsersDataModel.Telephone" Width="1.5" PointX="18.75" PointY="2" />
+        <EntityTypeShape EntityType="UsersDataModel.Country" Width="1.5" PointX="21.25" PointY="4.875" />
+        <EntityTypeShape EntityType="UsersDataModel.Place" Width="1.5" PointX="14" PointY="4.875" />
+        <EntityTypeShape EntityType="UsersDataModel.PostalOffice" Width="1.5" PointX="16.375" PointY="4.875" />
+        <EntityTypeShape EntityType="UsersDataModel.CustomerDevice" Width="1.5" PointX="13.25" PointY="14.25" />
+        <EntityTypeShape EntityType="UsersDataModel.Device" Width="1.5" PointX="7.5" PointY="14.125" />
+        <EntityTypeShape EntityType="UsersDataModel.Manufacturer" Width="1.5" PointX="7.375" PointY="9.375" />
+        <EntityTypeShape EntityType="UsersDataModel.Repair" Width="1.5" PointX="12.125" PointY="12" />
+        <EntityTypeShape EntityType="UsersDataModel.Service" Width="1.5" PointX="14.375" PointY="12" />
+        <EntityTypeShape EntityType="UsersDataModel.WorkItem" Width="1.5" PointX="13.25" PointY="9.375" />
+        <EntityTypeShape EntityType="UsersDataModel.Customer" Width="1.5" PointX="4.875" PointY="9.375" />
+        <EntityTypeShape EntityType="UsersDataModel.Employee" Width="1.5" PointX="10" PointY="9.375" />
+        <EntityTypeShape EntityType="UsersDataModel.JobRole" Width="1.5" PointX="10" PointY="11.75" />
+        <EntityTypeShape EntityType="UsersDataModel.Commissioner" Width="1.5" PointX="2.375" PointY="9.375" />
+        <EntityTypeShape EntityType="UsersDataModel.County" Width="1.5" PointX="18.75" PointY="4.875" />
+        <InheritanceConnector EntityType="UsersDataModel.Manufacturer" />
+        <InheritanceConnector EntityType="UsersDataModel.Repair" />
+        <InheritanceConnector EntityType="UsersDataModel.Service" />
+        <InheritanceConnector EntityType="UsersDataModel.Customer" />
+        <InheritanceConnector EntityType="UsersDataModel.Employee" />
+        <InheritanceConnector EntityType="UsersDataModel.Commissioner" />
+        <AssociationConnector Association="UsersDataModel.ContactInfoUser" />
+        <AssociationConnector Association="UsersDataModel.AddressContactInfo" />
+        <AssociationConnector Association="UsersDataModel.PlaceAddress" />
+        <AssociationConnector Association="UsersDataModel.TelephoneContactInfo" />
+        <AssociationConnector Association="UsersDataModel.TelephoneCounty" />
+        <AssociationConnector Association="UsersDataModel.CountryCounty" />
+        <AssociationConnector Association="UsersDataModel.PostalOfficePlace" />
+        <AssociationConnector Association="UsersDataModel.CountyPostalOffice" />
+        <AssociationConnector Association="UsersDataModel.RepairCustomerDevice" />
+        <AssociationConnector Association="UsersDataModel.ServiceCustomerDevice" />
+        <AssociationConnector Association="UsersDataModel.CustomerDeviceCustomer" ></AssociationConnector>
+        <AssociationConnector Association="UsersDataModel.CustomerDeviceCommissioner" />
+        <AssociationConnector Association="UsersDataModel.CustomerDeviceDevice" />
+        <AssociationConnector Association="UsersDataModel.ManufacturerDevice" />
+        <AssociationConnector Association="UsersDataModel.EmployeeWorkItem" />
+        <AssociationConnector Association="UsersDataModel.JobRoleEmployee" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

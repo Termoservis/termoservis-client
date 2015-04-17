@@ -1,0 +1,170 @@
+﻿<mahapps:MetroWindow x:Class="TermoservisClient.Windows.Users.NewUser.NewUserView"
+					 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+					 xmlns:Converters="clr-namespace:TermoservisClient.Converters"
+					 xmlns:Properties="clr-namespace:TermoservisClient.Properties"
+					 xmlns:Controls.Views="clr-namespace:TermoservisClient.Controls"
+					 xmlns:Validation="clr-namespace:TermoservisClient.Validation"
+					 xmlns:Windows="clr-namespace:TermoservisClient.Windows" 
+					 xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
+					 Title="Novi korisnik" Width="500" Height="543"
+					 DataContext="{Binding Source={StaticResource ViewModelProvider}, Path=NewUserViewModel}"
+					 Icon="/Termoservis;component/Resources/Images/User-Add.png"
+					 SaveWindowPosition="True" GlowBrush="{StaticResource AccentColorBrush}"
+					 Closing="WindowClosing">
+	<TabControl Margin="3" Background="{x:Null}" BorderBrush="{x:Null}">
+		
+		<!-- Podaci tab item -->
+		<TabItem Header="Podaci">
+			<Grid Margin="0,5,0,0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="30" />
+					<RowDefinition Height="30" />
+
+					<RowDefinition Height="15" />
+
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<!-- TODO Add website text box -->
+					
+				<!-- Customer Type -->
+				<Label Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center">Vrsta korisnika</Label>
+				<ComboBox ToolTip="Odaberite vrstu korisnika." Margin="2" Grid.Row="0" Grid.Column="1" SelectedIndex="{Binding UserTypeIndex}" IsTabStop="False" VerticalContentAlignment="Center" SelectionChanged="UserTypeChanged">
+					<Label>Fizička osoba</Label>
+					<Label>Pravna osoba</Label>
+				</ComboBox>
+
+				<!-- Name and Surname -->
+				<Label x:Name="CustomerNameLabel" Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center">Ime i Prezime</Label>
+				<TextBox Text="{Validation:ValidationBinding MandatoryInputRule, UserName}" 
+						 ToolTip="Ime i Prezine fizičke osobe ili Naziv pravne osobe. Ovo polje ne smije ostati prazno."
+						 Style="{DynamicResource TextBoxValidation}" 
+						 Margin="2" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center"
+						 TabIndex="0" />
+				
+				<!-- Personal Identification Number -->
+				<Label Grid.Row="1" Grid.Column="2" VerticalContentAlignment="Center">OIB</Label>
+				<TextBox x:Name="CustomerPINTextBox" 
+						 Text="{Validation:ValidationBinding PINInputRule, UserPIN}"
+						 ToolTip="OIB ili JMBG Pravne osobe. Mora sadržavati točno 11 ili 13 znamenki."
+						 Style="{DynamicResource TextBoxValidation}"
+						 Margin="2" Grid.Row="1" Grid.Column="3" VerticalContentAlignment="Center"
+						 TabIndex="1" IsTabStop="True" IsEnabled="False"/>
+
+				<!-- Contact info form -->
+				<Controls.Views:ContactInfoEditView x:Name="CustomerEditContactInfoView" 
+								Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Margin="3"/>
+				
+				<!-- To Devices tab button -->
+				<Button Content="Uređaji" ToolTip="Nastavi do unosa uređaja" 
+						Grid.Column="2" HorizontalAlignment="Right" Grid.Row="9" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Margin="0,0,2,2" Padding="30,5" />
+			</Grid>
+		</TabItem>
+		
+		<!-- Uredaji tab item -->
+		<TabItem Header="Uređaji">
+			<Grid Margin="0,5,0,0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="30" />
+					<RowDefinition Height="30" />
+					<RowDefinition Height="15" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+
+				<!-- Manufacturer select -->
+				<Label Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center">Proizvođać</Label>
+				<ComboBox Margin="2" Grid.Row="0" Grid.Column="1" IsEditable="True" TabIndex="0" VerticalContentAlignment="Center" />
+				
+				<!-- Mark select -->
+				<Label Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center">Oznaka</Label>
+				<ComboBox Margin="2" Grid.Row="1" Grid.Column="1" IsEditable="True" TabIndex="1" VerticalContentAlignment="Center" />
+
+				<!-- Commision date -->
+				<Label Grid.Row="0" Grid.Column="2" VerticalContentAlignment="Center">Puštanje u pogon</Label>
+				<TextBox Margin="2" Grid.Row="0" Grid.Column="3" TabIndex="2" VerticalContentAlignment="Center" />
+				
+				<!-- Commisioned by -->
+				<Label Grid.Row="1" Grid.Column="2" VerticalContentAlignment="Center">Pustili u pogon</Label>
+				<ComboBox Margin="2" Grid.Row="1" Grid.Column="3" IsEditable="True" TabIndex="3" VerticalContentAlignment="Center" />
+
+				<!-- Devices list -->
+				<!-- TODO Check if this can be replaced with StackPanel -->
+				<Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="30" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+					<Label Grid.Row="0" VerticalContentAlignment="Center">Lista uređaja</Label>
+					<ListBox Margin="2" Grid.Row="1" />
+				</Grid>
+			</Grid>	
+		</TabItem>
+		
+		<!-- Poslovi tab item -->
+		<TabItem Header="Poslovi">
+			<Grid Margin="0,5,0,0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="30" />
+					<RowDefinition Height="30" />
+					<RowDefinition Height="30" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+
+				<!-- Devices select -->
+				<Label Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center">Uređaj</Label>
+				<ComboBox Margin="2" Grid.Row="0" Grid.Column="1" IsEditable="True" TabIndex="0" VerticalContentAlignment="Center" />
+
+				<!-- Work type select -->
+				<Label Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center">Vrsta posla</Label>
+				<ComboBox Margin="2" Grid.Row="1" Grid.Column="1" IsEditable="True" TabIndex="1" VerticalContentAlignment="Center" />
+
+				<!-- Date -->
+				<Label Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center">Datum</Label>
+				<TextBox Margin="2" Grid.Row="2" Grid.Column="1" TabIndex="3" VerticalContentAlignment="Center" />
+
+				<!-- Price -->
+				<Label Grid.Row="2" Grid.Column="2" VerticalContentAlignment="Center">Cijena</Label>
+				<StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="3">
+					<TextBox Margin="2" TabIndex="3" MinWidth="70" VerticalContentAlignment="Center" />
+					<Label>kn</Label>
+				</StackPanel>
+
+				<!-- Description -->
+				<StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Margin="0,15,0,0" >
+					<Label VerticalContentAlignment="Center">Opis</Label>
+					<TextBox Margin="2" AcceptsReturn="True" AutoWordSelection="True" TextWrapping="Wrap" TabIndex="4" VerticalContentAlignment="Center" MaxHeight="100" VerticalScrollBarVisibility="Auto"/>
+				</StackPanel>
+
+				<!-- Work items list -->
+				<Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Margin="0,15,0,0" >
+					<Grid.RowDefinitions>
+						<RowDefinition Height="30" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+					<Label Grid.Row="0" VerticalContentAlignment="Center">Lista poslova</Label>
+					<ListBox Margin="2" Grid.Row="1" MinHeight="150" />
+				</Grid>
+			</Grid>
+		</TabItem>
+		
+	</TabControl>
+</mahapps:MetroWindow>

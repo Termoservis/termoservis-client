@@ -1,0 +1,42 @@
+﻿<mahapps:MetroWindow x:Class="TermoservisClient.Windows.Login.LoginWindow"
+					 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					 xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
+					 Title="Login - Termoservis" Height="300" Width="500" 
+					 Icon="/Resources/Images/ID-View.png" WindowStartupLocation="CenterScreen"
+					 ResizeMode="NoResize" SaveWindowPosition="False" GlowBrush="{StaticResource AccentColorBrush}"
+					 DataContext="{Binding Source={StaticResource ViewModelProvider}, Path=LoginWindowViewModel}"
+					 Loaded="LoginWindowOnLoaded">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="35" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<TextBox x:Name="UserNameBox" 
+				 Text="{Binding Username, Mode=TwoWay}" 
+				 Grid.Row="1" Margin="30, 10, 30, 3"
+				 VerticalContentAlignment="Center"
+				 mahapps:TextboxHelper.ClearTextButton="True" 
+				 mahapps:TextboxHelper.Watermark="korisničko ime"
+				 TabIndex="0"
+				 KeyDown="UserNameBoxKeyDown"/>
+		<PasswordBox x:Name="PasswordBox"
+					 Grid.Row="2" Margin="30, 3, 30, 10"
+					 VerticalContentAlignment="Center"
+					 mahapps:TextboxHelper.ClearTextButton="True" 
+					 mahapps:TextboxHelper.Watermark="zaporka" 
+					 TabIndex="1"
+					 KeyDown="PasswordBoxKeyDown" />
+		<TextBlock Text="caps lock je uključen"
+				   Visibility="{Binding CapsLockState, Converter={StaticResource BoolToVisibilityConverter}}"
+				   Grid.Row="3" Margin="30, 5, 30, 5"
+				   FontSize="16" HorizontalAlignment="Right"/>
+		<TextBlock Text="pogrešno korisničko ime ili zaporka" 
+				   Visibility="{Binding IsInvalid, Converter={StaticResource BoolToVisibilityConverter}}"
+				   Grid.Row="3" Margin="30, 5, 30, 5"
+				   FontSize="16" Foreground="{StaticResource AccentColorBrush}" />
+	</Grid>
+</mahapps:MetroWindow>

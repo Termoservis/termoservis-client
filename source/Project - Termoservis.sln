@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.20617.1 PREVIEW
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TermoservisClient", "TermoservisClient\TermoservisClient.csproj", "{25A12B9C-CBFF-46DB-868A-1D007F847B4A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{643B8861-1FA8-4BE7-8E55-BE9E239E5CAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orflow", "Orflow\Orflow.csproj", "{7D41FD2D-846D-44E2-AEFD-A175347FAAE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Termoservis.Core", "Termoservis.Core\Termoservis.Core.csproj", "{0E80B364-3545-42A1-BD54-B18EFEFC8EA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Termoservis.Data", "Termoservis.Data\Termoservis.Data.csproj", "{1010384A-AD8F-4891-B5E7-8071CBACA80D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Termoservis.Services.Fiscalization", "Termoservis.Services.Fiscalization\Termoservis.Services.Fiscalization.csproj", "{849FE4F9-6D04-4A81-B20F-63C0E502AA1D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{25A12B9C-CBFF-46DB-868A-1D007F847B4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25A12B9C-CBFF-46DB-868A-1D007F847B4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25A12B9C-CBFF-46DB-868A-1D007F847B4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25A12B9C-CBFF-46DB-868A-1D007F847B4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D41FD2D-846D-44E2-AEFD-A175347FAAE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D41FD2D-846D-44E2-AEFD-A175347FAAE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D41FD2D-846D-44E2-AEFD-A175347FAAE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D41FD2D-846D-44E2-AEFD-A175347FAAE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E80B364-3545-42A1-BD54-B18EFEFC8EA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E80B364-3545-42A1-BD54-B18EFEFC8EA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E80B364-3545-42A1-BD54-B18EFEFC8EA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E80B364-3545-42A1-BD54-B18EFEFC8EA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1010384A-AD8F-4891-B5E7-8071CBACA80D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1010384A-AD8F-4891-B5E7-8071CBACA80D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1010384A-AD8F-4891-B5E7-8071CBACA80D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1010384A-AD8F-4891-B5E7-8071CBACA80D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{849FE4F9-6D04-4A81-B20F-63C0E502AA1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{849FE4F9-6D04-4A81-B20F-63C0E502AA1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{849FE4F9-6D04-4A81-B20F-63C0E502AA1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{849FE4F9-6D04-4A81-B20F-63C0E502AA1D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{25A12B9C-CBFF-46DB-868A-1D007F847B4A} = {643B8861-1FA8-4BE7-8E55-BE9E239E5CAB}
+		{7D41FD2D-846D-44E2-AEFD-A175347FAAE6} = {643B8861-1FA8-4BE7-8E55-BE9E239E5CAB}
+		{0E80B364-3545-42A1-BD54-B18EFEFC8EA8} = {643B8861-1FA8-4BE7-8E55-BE9E239E5CAB}
+		{1010384A-AD8F-4891-B5E7-8071CBACA80D} = {643B8861-1FA8-4BE7-8E55-BE9E239E5CAB}
+		{849FE4F9-6D04-4A81-B20F-63C0E502AA1D} = {643B8861-1FA8-4BE7-8E55-BE9E239E5CAB}
+	EndGlobalSection
+EndGlobal

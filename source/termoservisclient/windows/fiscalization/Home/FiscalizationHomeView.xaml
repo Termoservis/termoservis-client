@@ -1,0 +1,108 @@
+﻿<UserControl x:Class="TermoservisClient.Windows.Fiscalization.Home.FiscalizationHomeView"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
+			 mc:Ignorable="d" 
+			 d:DesignHeight="500" d:DesignWidth="550"
+			 DataContext="{Binding Source={StaticResource ViewModelProvider}, Path=FiscalizationHomeViewModel}"
+			 Loaded="FiscalizationHomeViewOnLoaded">
+	<Grid Margin="8,8,8,8" Background="White">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		
+		<!-- Filter accounts -->
+		<Grid Margin="5">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="8" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<Label Content="Filtriraj prema datumu" VerticalContentAlignment="Center" FontFamily="Segoe UI Symbol" FontSize="16" Foreground="{DynamicResource BlackBrush}" Opacity="0.65" Margin="7,5,0,5" />
+			<Grid Grid.Row="0" Grid.Column="2" VerticalAlignment="Center">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<TextBlock Grid.Column="0" Text=" od " FontSize="16" Foreground="{StaticResource HeaderForegroundBrush}" VerticalAlignment="Center" />
+				<DatePicker Grid.Column="1" Margin="3" 
+							SelectedDate="{Binding AccountRangeFrom, Mode=TwoWay}" />
+				<TextBlock Grid.Column="2" Text=" do " FontSize="16" Foreground="{StaticResource HeaderForegroundBrush}" VerticalAlignment="Center" />
+				<DatePicker Grid.Column="3" Margin="3" 
+							SelectedDate="{Binding AccountRangeTo, Mode=TwoWay}" />
+			</Grid>
+
+			<mahapps:ToggleSwitch Grid.Row="1" Grid.Column="0" IsChecked="{Binding FilterByAccountNumber}" Header="Filtriraj prema broju računa" OnLabel="Da" OffLabel="Ne" />
+			<StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="2" IsEnabled="{Binding FilterByAccountNumber}" VerticalAlignment="Bottom">
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text=" od " FontSize="16" Foreground="{StaticResource HeaderForegroundBrush}" />
+					<TextBlock Text="{Binding AccountNumberFrom}" FontSize="16" Foreground="{StaticResource AccentColorBrush}" Visibility="{Binding HasAccounts, Converter={StaticResource BoolToVisibilityConverter}}" />
+					<TextBlock Text="0" FontSize="16" Foreground="{StaticResource AccentColorBrush}" Visibility="{Binding HasAccounts, Converter={StaticResource InvertedBoolToVisibilityConverter}}" />
+					<TextBlock Text=" do " FontSize="16" Foreground="{StaticResource HeaderForegroundBrush}" />
+					<TextBlock Text="{Binding AccountNumberTo}" FontSize="16" Foreground="{StaticResource AccentColorBrush}" Visibility="{Binding HasAccounts, Converter={StaticResource BoolToVisibilityConverter}}" />
+					<TextBlock Text="0" FontSize="16" Foreground="{StaticResource AccentColorBrush}" Visibility="{Binding HasAccounts, Converter={StaticResource InvertedBoolToVisibilityConverter}}" />
+				</StackPanel>
+				<mahapps:RangeSlider Margin="5,3" Height="25"
+									 RangeStart="{Binding AccountNumberMin}" 
+									 RangeStop="{Binding AccountNumberMax}" 
+									 RangeStartSelected="{Binding AccountNumberFrom, Mode=TwoWay}" 
+									 RangeStopSelected="{Binding AccountNumberTo, Mode=TwoWay}" />
+			</StackPanel>
+
+			<mahapps:ToggleSwitch Grid.Row="2" Grid.Column="0" IsChecked="{Binding FilterByStore}" Header="Filtriraj prema prodajnom mjestu" OnLabel="Da" OffLabel="Ne" />
+			<ComboBox Grid.Row="2" Grid.Column="2" Margin="3,3,3,0"
+					  IsEnabled="{Binding FilterByStore}" 
+					  ItemsSource="{Binding Stores}" SelectedItem="{Binding SelectedStore, Mode=TwoWay}" 
+					  VerticalAlignment="Bottom" />
+			
+			<Button AllowDrop="True" Content="prikaži" Grid.Row="3" Grid.Column="2" Margin="3, 20, 3, 10" Padding="12" Click="PreviewAccounts" />
+		</Grid >
+		
+		<!-- Import accounts -->
+		<Grid Grid.Row="1" MinWidth="78" MinHeight="72" AllowDrop="True" IsHitTestVisible="True" Margin="8">
+			<Path Data="M8.2000655,15.977L12.388772,15.977 5.1336883,21.54196 12.696168,21.54196C12.912266,21.54196,13.110164,21.651355,13.206462,21.824446L14.950044,26.592542 27.716808,26.592542 29.458889,21.824446C29.557789,21.651355,29.753086,21.54196,29.970682,21.54196L37.531803,21.54196 30.277981,15.977 34.466736,15.977 41.258163,20.545904C42.268753,21.149977,42.872845,22.541917,42.60075,23.63817L41.404159,30.195185C41.133266,31.291538,39.931476,32.19,38.734993,32.19L3.9331414,32.19C2.7353441,32.19,1.533447,31.291538,1.2626997,30.195185L0.064715919,23.63817C-0.20609439,22.541917,0.39802514,21.149977,1.4097285,20.545904z M19.798,0L22.798,0 22.798,10.213962 22.836025,10.175905 27.698,5.316 27.698,9.5312901 23.413978,13.815516 23.378889,13.850619 23.395859,13.870221 21.288999,15.977001 19.18079,13.870221 14.897,9.5859852 14.897,5.3694649 19.757833,10.23191 19.798,10.272044z" 
+				  Stretch="Uniform" Width="64" Height="64" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+				<Path.Style>
+					<Style TargetType="{x:Type Path}">
+						<Setter Property="Fill" Value="{DynamicResource ContentForegroundBrush}" />
+						<Style.Triggers>
+							<Trigger Property="IsEnabled" Value="False">
+								<Setter Property="Fill" Value="{DynamicResource DisabledWhiteColorBrush}" />
+							</Trigger>
+						</Style.Triggers>
+					</Style>
+				</Path.Style>
+				<Path.RenderTransform>
+					<TransformGroup>
+						<TransformGroup.Children>
+							<RotateTransform Angle="0" />
+							<ScaleTransform ScaleX="1" ScaleY="1" />
+						</TransformGroup.Children>
+					</TransformGroup>
+				</Path.RenderTransform>
+			</Path>
+			<TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" 
+					   Padding="0,92,0,0" 
+					   Foreground="{DynamicResource ContentForegroundBrush}" FontFamily="Segoe UI Light" FontSize="18">UBACI ZA UVOZ NOVOGA</TextBlock>
+			<Rectangle Stroke="{DynamicResource ContentForegroundBrush}" RadiusX="15" RadiusY="15" StrokeDashArray="5 5" Fill="Transparent" AllowDrop="True" Drop="OnImportDroped" DragLeave="UIElement_OnDragLeave" DragOver="UIElement_OnDragOver" />
+		</Grid>
+
+		<!-- Loading indicator -->
+		<Grid Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}" Grid.Row="0" Grid.RowSpan="2">
+			<Rectangle Fill="White" Opacity="0.8" />
+			<mahapps:ProgressRing IsActive="{Binding IsLoading}" />
+		</Grid>
+	</Grid>
+</UserControl>

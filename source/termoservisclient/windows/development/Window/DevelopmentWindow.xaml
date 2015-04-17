@@ -1,0 +1,21 @@
+﻿<mahapps:MetroWindow x:Class="TermoservisClient.Windows.Development.Window.DevelopmentWindow"
+					 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					 xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
+					 Title="Development - Termoservis" Height="350" Width="500"
+					 SaveWindowPosition="True" GlowBrush="{StaticResource AccentColorBrush}"
+					 DataContext="{Binding Source={StaticResource ViewModelProvider}, Path=DevelopmentWindowViewModel}">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition MinWidth="190" Width="190" />
+			<ColumnDefinition Width="3" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<ListBox Grid.Column="0" 
+				 ItemsSource="{Binding Tools}" />
+		<GridSplitter Grid.Column="1" Width="3" />
+		<ContentControl Grid.Column="2" />
+	</Grid>
+	
+	
+</mahapps:MetroWindow>

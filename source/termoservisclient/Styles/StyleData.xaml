@@ -1,0 +1,33 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:users="clr-namespace:Termoservis.Data.Users;assembly=Termoservis.Data"
+					xmlns:converters="clr-namespace:TermoservisClient.Converters">
+	<converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" DefaultHidden="Collapsed" />
+	<converters:InvertedBoolToVisibilityConverter x:Key="InvertedBoolToVisibilityConverter" DefaultHidden="Collapsed" />
+	
+	<!-- Data.Telephone templates -->
+	<converters:TelephoneToStringConverter x:Key="TelephoneToStringConverter" />
+	<DataTemplate DataType="{x:Type users:Telephone}" x:Key="DataTelephoneSmallView">
+		<Label Content="{Binding Converter={StaticResource TelephoneToStringConverter}}" />
+	</DataTemplate>
+	
+	<!-- Data.Country template -->
+	<DataTemplate DataType="{x:Type users:Country}" x:Key="DataCountryNameView">
+		<Label Content="{Binding Name}" />
+	</DataTemplate>
+
+	<!-- Data.County template -->
+	<DataTemplate DataType="{x:Type users:County}" x:Key="DataCountyNameView">
+		<Label Content="{Binding Name}" />
+	</DataTemplate>
+
+	<!-- Data.Place template -->
+	<DataTemplate DataType="{x:Type users:Place}" x:Key="DataPlaceDetailView">
+		<StackPanel Orientation="Horizontal" ToolTip="{Binding Name}">
+			<Label Content="{Binding Path=Name}" BorderThickness="0,0,1,0" BorderBrush="LightGray" Width="100"/>
+			<Label Content="{Binding Path=PostalOffice.ZIP}" FontStyle="Italic" />
+			<Label Content="{Binding Path=PostalOffice.Name}" FontStyle="Italic" />
+		</StackPanel>
+	</DataTemplate>
+
+</ResourceDictionary>

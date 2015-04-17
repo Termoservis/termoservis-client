@@ -1,0 +1,412 @@
+﻿<mahapps:MetroWindow x:Class="TermoservisClient.Windows.Fiscalization.Window.FiscalizationPreviewWindow"
+					 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					 xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
+					 xmlns:fiscalization="clr-namespace:Termoservis.Data.Fiscalization;assembly=Termoservis.Data"
+					 xmlns:fiscalizationPreviewWindow="clr-namespace:TermoservisClient.Windows.Fiscalization.Window"
+					 Title="Pregled - Fiskalizacija - Termoservis" Height="700" Width="1024" MinWidth="768"
+					 SaveWindowPosition="True" GlowBrush="{StaticResource ThemeBrush}"
+					 DataContext="{Binding Source={StaticResource ViewModelProvider}, Path=FiscalizationPreviewWindowViewModel}">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		
+		<Grid Grid.Row="0" Margin="8">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<StackPanel Orientation="Horizontal" Grid.Row="0" Margin="3">
+				<TextBlock Text="računa za ispisati" Margin="3" FontFamily="Segoe UI Simbol" FontSize="16" Opacity="0.65" />
+				<TextBlock Text="{Binding AccountsCount}" Margin="12,3" FontFamily="Segoe UI Simbol" FontSize="16" Opacity="1" />
+			</StackPanel>
+			<Button Content="Ispiši" Margin="3" Padding="10, 15" Grid.Row="1" Click="PrintPreviewClick" />
+		</Grid>
+		
+		<!-- Document viewer -->
+		<FlowDocumentReader Background="#FFEAEAEA" Zoom="150" ViewingMode="Scroll" Grid.Row="1">
+			<FlowDocument x:Name="PreviewDocument" PagePadding="40" FontSize="11" ColumnWidth="400" FontFamily="Segoe UI">
+				<Section>
+					<!-- Header -->
+					<BlockUIContainer>
+						<Grid>
+							<StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center">
+								<TextBlock Text="Promet po gotovinskim računima za prodajno mjesto:" FontSize="12" FontWeight="Bold" />
+								<TextBlock Text="{Binding Stores}" FontSize="12" FontWeight="Bold" />
+							</StackPanel>
+							<TextBlock Text="TERMOSERVIS" FontSize="42" FontFamily="Segoe UI Light" />
+							<Polygon Points="0,0 0,15 10,8" Fill="Red" Margin="120,8,0,0" />
+						</Grid>
+					</BlockUIContainer> 
+					<Paragraph Margin="0">Vl. Mario Toplek</Paragraph>
+				
+					<!-- Header info -->
+					<Table>
+						<Table.Columns>
+							<TableColumn Width="50" />
+							<TableColumn Width="auto" />
+							<TableColumn Width="60" />
+							<TableColumn Width="Auto" />
+						</Table.Columns>
+						<TableRowGroup>
+							<TableRow>
+								<TableCell Padding="3">
+									<Paragraph TextAlignment="Right">
+										<Bold>IBAN</Bold>
+									</Paragraph>
+								</TableCell>
+								<TableCell Padding="3">
+									<Paragraph>HR-2123400091166017063</Paragraph>
+								</TableCell>
+								<TableCell Padding="3">
+									<Paragraph TextAlignment="Right">
+										<Bold>Telefon</Bold>
+									</Paragraph>
+								</TableCell>
+								<TableCell Padding="3">
+									<Paragraph>+385 40 395 970</Paragraph>
+								</TableCell>
+							</TableRow>
+							<TableRow>
+								<TableCell Padding="3">
+									<Paragraph TextAlignment="Right">
+										<Bold>Adresa</Bold>
+									</Paragraph>
+								</TableCell>
+								<TableCell Padding="3">
+									<Paragraph>Ivane Brlić Mažuranić 26</Paragraph>
+								</TableCell>
+								<TableCell Padding="3">
+									<Paragraph TextAlignment="Right">
+										<Bold>Mobitel</Bold>
+									</Paragraph>
+								</TableCell>
+								<TableCell Padding="3">
+									<Paragraph>+385 98 600 122</Paragraph>
+								</TableCell>
+							</TableRow>
+							<TableRow>
+								<TableCell/>
+								<TableCell Padding="3">
+									<Paragraph>40000, Čakovec</Paragraph>
+								</TableCell>
+								<TableCell Padding="3">
+									<Paragraph TextAlignment="Right">
+										<Bold>Email</Bold>
+									</Paragraph>
+								</TableCell>
+								<TableCell Padding="3">
+									<Paragraph>info@termoservis.hr</Paragraph>
+								</TableCell>
+							</TableRow>
+							<TableRow>
+								<TableCell/>
+								<TableCell Padding="3">
+									<Paragraph>Hrvatska (Croatia)</Paragraph>
+								</TableCell>
+								<TableCell Padding="3">
+									<Paragraph TextAlignment="Right">
+										<Bold>Stranica</Bold>
+									</Paragraph>
+								</TableCell>
+								<TableCell Padding="3">
+									<Paragraph>www.termoservis.hr</Paragraph>
+								</TableCell>
+							</TableRow>
+							<TableRow>
+								<TableCell />
+								<TableCell />
+								<TableCell Padding="3">
+									<Paragraph TextAlignment="Right">
+										<Bold>Računi</Bold>
+									</Paragraph>
+								</TableCell>
+								<TableCell Padding="3">
+									<BlockUIContainer>
+										<StackPanel Orientation="Horizontal">
+											<TextBlock Text="od " />
+											<TextBlock Text="{Binding AccountsStartDate, StringFormat=dd.MM.yyyy.}" FontWeight="Bold" />
+											<TextBlock Text=" do " />
+											<TextBlock Text="{Binding AccountsEndDate, StringFormat=dd.MM.yyyy.}" FontWeight="Bold" />
+										</StackPanel>
+									</BlockUIContainer>
+								</TableCell>
+							</TableRow>
+						</TableRowGroup>
+					</Table>
+				</Section>
+
+				<!-- Report footer -->
+				<BlockUIContainer>
+					<Grid Margin="0,8,0,0">
+						<Grid.Resources>
+							<Style TargetType="{x:Type TextBlock}">
+								<Setter Property="FontSize" Value="9" />
+							</Style>
+						</Grid.Resources>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="1" />
+							<RowDefinition Height="12" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+
+						<!-- Account line -->
+						<Border SnapsToDevicePixels="True" 
+												BorderThickness="1" 
+												BorderBrush="{StaticResource ContentForegroundBrush}" 
+												Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" 
+												Margin="0, 0" />
+
+						<Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="20" />
+								<ColumnDefinition Width="80" />
+								<ColumnDefinition Width="80" />
+								<ColumnDefinition Width="80" />
+							</Grid.ColumnDefinitions>
+
+							<!-- Footer content -->
+							<TextBlock Grid.Row="0" Grid.Column="0" Text="REKAPITULACIJA" FontWeight="Bold" FontSize="14" />
+							<TextBlock Grid.Row="1" Grid.Column="0" Text="Promet po gotovinskim računima za prodajno mjesto" FontSize="12" />
+							<TextBlock Text="VPC" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" />
+							<TextBlock Text="PDV" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" />
+							<TextBlock Text="MPC" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Center" />
+							<ListBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" IsHitTestVisible="False" ItemsSource="{Binding StoresShown}">
+								<ListBox.ItemTemplate>
+									<DataTemplate>
+										<Grid>
+											<Grid.Resources>
+												<Style TargetType="{x:Type TextBlock}">
+													<Setter Property="FontSize" Value="9" />
+												</Style>
+											</Grid.Resources>
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="*" />
+												<ColumnDefinition Width="20" />
+												<ColumnDefinition Width="80" />
+												<ColumnDefinition Width="80" />
+												<ColumnDefinition Width="80" />
+											</Grid.ColumnDefinitions>
+											<TextBlock Text="{Binding Name}" FontSize="11" />
+											<StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right">
+												<TextBlock Text="{Binding Price, StringFormat=0.00}" VerticalAlignment="Center" />
+												<TextBlock Text=" kn" VerticalAlignment="Center" />
+											</StackPanel>
+											<StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right">
+												<TextBlock Text="{Binding PriceDelta, StringFormat=0.00}" VerticalAlignment="Center" />
+												<TextBlock Text=" kn" VerticalAlignment="Center" />
+											</StackPanel>
+											<StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Right">
+												<TextBlock Text="{Binding PriceTotal, StringFormat=0.00}" VerticalAlignment="Center" />
+												<TextBlock Text=" kn" VerticalAlignment="Center" />
+											</StackPanel>
+										</Grid>
+									</DataTemplate>
+								</ListBox.ItemTemplate>
+							</ListBox>
+
+							<!-- Separator -->
+							<Border SnapsToDevicePixels="True" 
+												BorderThickness="1" 
+												BorderBrush="{StaticResource ContentForegroundBrush}" 
+												Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" 
+												Margin="0,8" />
+
+							<!-- Total report values -->
+							<StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="0" Margin="0,5">
+								<TextBlock Text="UKUPNO OD " FontSize="11" FontWeight="Bold" />
+								<TextBlock Text="{Binding AccountsStartDate, StringFormat=dd.MM.yyyy.}" FontSize="11" FontWeight="Bold" />
+								<TextBlock Text=" DO " FontSize="11" FontWeight="Bold" />
+								<TextBlock Text="{Binding AccountsEndDate, StringFormat=dd.MM.yyyy.}" FontSize="11" FontWeight="Bold" />
+							</StackPanel>
+							<TextBlock Text="VPC" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" />
+							<TextBlock Text="PDV" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Center" />
+							<TextBlock Text="MPC" Grid.Row="4" Grid.Column="4" HorizontalAlignment="Center" />
+
+							<StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Right">
+								<TextBlock Text="{Binding Price, StringFormat=0.00}" FontWeight="Bold" VerticalAlignment="Center" />
+								<TextBlock Text=" kn" FontWeight="Bold" VerticalAlignment="Center" />
+							</StackPanel>
+							<StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="3" HorizontalAlignment="Right">
+								<TextBlock Text="{Binding PriceDelta, StringFormat=0.00}" FontWeight="Bold" VerticalAlignment="Center" />
+								<TextBlock Text=" kn" FontWeight="Bold" VerticalAlignment="Center" />
+							</StackPanel>
+							<StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="4" HorizontalAlignment="Right">
+								<TextBlock Text="{Binding PriceTotal, StringFormat=0.00}" FontWeight="Bold" VerticalAlignment="Center" />
+								<TextBlock Text=" kn" FontWeight="Bold" VerticalAlignment="Center" />
+							</StackPanel>
+						</Grid>
+					</Grid>
+				</BlockUIContainer>
+				
+				<!-- Progress indicator -->
+				<BlockUIContainer>
+					<mahapps:ProgressRing IsActive="{Binding AreAccountsLoading}" 
+										  Visibility="{Binding AreAccountsLoading, Converter={StaticResource BoolToVisibilityConverter}}" />
+				</BlockUIContainer>
+
+				<FlowDocument.Resources>
+					<DataTemplate DataType="{x:Type fiscalization:AccountEntity}">
+						<Grid Margin="0,8,0,0">
+							<Grid.Resources>
+								<Style TargetType="{x:Type TextBlock}">
+									<Setter Property="FontSize" Value="9" />
+								</Style>
+							</Grid.Resources>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="1" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="12" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="12" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+
+							<!-- Account line -->
+							<Border SnapsToDevicePixels="True" 
+												BorderThickness="1" 
+												BorderBrush="{StaticResource ContentForegroundBrush}" 
+												Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" 
+												Margin="0, 0" />
+
+							<!-- Account info -->
+							<TextBlock Text="Račun: " Grid.Row="1" Grid.Column="0" Margin="0,10,5,0" />
+							<StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Margin="0,10,0,0">
+								<TextBlock Text="{Binding Number}" FontWeight="Bold" />
+								<TextBlock Text="/" FontWeight="Bold" />
+								<TextBlock Text="{Binding StoreName}" FontWeight="Bold" />
+								<TextBlock Text="/" FontWeight="Bold" />
+								<TextBlock Text="{Binding TreasuryName}" FontWeight="Bold" />
+							</StackPanel>
+							<TextBlock Text="{Binding Date, StringFormat='dd.MM.yyyy HH:mm:ss'}" Grid.Row="1" Grid.Column="2" Margin="8,10,0,0" />
+
+							<!-- Cancellation account -->
+							<TextBlock Text="STORNO računa: " Grid.Row="2" Grid.Column="1" FontWeight="Bold" 
+												   Visibility="{Binding IsCancellationAccount, Converter={StaticResource BoolToVisibilityConverter}}" Margin="0,12,0,0" />
+							<TextBlock Text="{Binding CancellationAccountNumber}" Grid.Row="3" Grid.Column="1" 
+												   Visibility="{Binding IsCancellationAccount, Converter={StaticResource BoolToVisibilityConverter}}" />
+							<TextBlock Text="{Binding CancellationAccountDate, StringFormat='dd.MM.yyyy HH:mm:ss'}" Grid.Row="3" Grid.Column="2" 
+												   Visibility="{Binding IsCancellationAccount, Converter={StaticResource BoolToVisibilityConverter}}" />
+
+							<!-- Account items -->
+							<Grid Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="20" />
+									<ColumnDefinition Width="80" />
+									<ColumnDefinition Width="80" />
+									<ColumnDefinition Width="80" />
+								</Grid.ColumnDefinitions>
+
+								<TextBlock Text="Naziv stavke" />
+								<TextBlock Text="kol" Grid.Column="1" HorizontalAlignment="Center" />
+								<TextBlock Text="VPC" Grid.Column="2" HorizontalAlignment="Center" />
+								<TextBlock Text="PDV" Grid.Column="3" HorizontalAlignment="Center" />
+								<TextBlock Text="MPC" Grid.Column="4" HorizontalAlignment="Center" />
+							</Grid>
+							<ItemsControl ItemsSource="{Binding ItemEntities}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3">
+								<ItemsControl.ItemTemplate>
+									<DataTemplate DataType="fiscalization:ItemEntity">
+										<Grid>
+											<Grid.Resources>
+												<Style TargetType="{x:Type TextBlock}">
+													<Setter Property="FontSize" Value="9" />
+												</Style>
+											</Grid.Resources>
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="*" />
+												<ColumnDefinition Width="20" />
+												<ColumnDefinition Width="80" />
+												<ColumnDefinition Width="80" />
+												<ColumnDefinition Width="80" />
+											</Grid.ColumnDefinitions>
+
+											<TextBlock Text="{Binding Name}" />
+											<TextBlock Text="{Binding Amount}" Grid.Column="1" HorizontalAlignment="Center" />
+											<StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
+												<TextBlock Text="{Binding Price, StringFormat=0.00}" />
+												<TextBlock Text=" kn" />
+											</StackPanel>
+											<StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Right">
+												<TextBlock Text="{Binding PriceDelta, StringFormat=0.00}" />
+												<TextBlock Text=" kn" />
+											</StackPanel>
+											<StackPanel Orientation="Horizontal" Grid.Column="4" HorizontalAlignment="Right">
+												<TextBlock Text="{Binding TotalPrice, StringFormat=0.00}" />
+												<TextBlock Text=" kn" />
+											</StackPanel>
+										</Grid>
+									</DataTemplate>
+								</ItemsControl.ItemTemplate>
+							</ItemsControl>
+
+							<!-- Account payment and total -->
+							<StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3">
+								<TextBlock Text="Plaćanje " />
+								<TextBlock Text="{Binding PaymentMethod}" />
+							</StackPanel>
+							<Grid Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="20" />
+									<ColumnDefinition Width="80" />
+									<ColumnDefinition Width="80" />
+									<ColumnDefinition Width="80" />
+								</Grid.ColumnDefinitions>
+
+								<StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
+									<TextBlock Text="{Binding ItemsPriceSum, StringFormat=0.00}" />
+									<TextBlock Text=" kn" />
+								</StackPanel>
+								<StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Right">
+									<TextBlock Text="{Binding ItemsPriceDeltaSum, StringFormat=0.00}" />
+									<TextBlock Text=" kn" />
+								</StackPanel>
+								<StackPanel Orientation="Horizontal" Grid.Column="4" HorizontalAlignment="Right">
+									<TextBlock Text="{Binding ItemsPriceTotalSum, StringFormat=0.00}" FontWeight="Bold" />
+									<TextBlock Text=" kn" FontWeight="Bold" />
+								</StackPanel>
+							</Grid>
+						</Grid>
+					</DataTemplate>
+				</FlowDocument.Resources>
+			</FlowDocument>
+		</FlowDocumentReader>
+
+		<!-- Drop shadow on document -->
+		<Rectangle Grid.Row="1" Height="25" VerticalAlignment="Top">
+			<Rectangle.Fill>
+				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+					<GradientStop Color="#66000000"/>
+					<GradientStop Offset="1"/>
+				</LinearGradientBrush>
+			</Rectangle.Fill>
+		</Rectangle>
+	</Grid>
+</mahapps:MetroWindow>

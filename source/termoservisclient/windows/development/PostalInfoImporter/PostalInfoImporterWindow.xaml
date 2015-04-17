@@ -1,0 +1,13 @@
+﻿<Window x:Class="TermoservisClient.Windows.Development.PostalInfoImporter.PostalInfoImporterWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		Title="PostalInfoImporterWindow" Height="300" Width="300">
+	<Grid Margin="2">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="0.3*" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<TextBox x:Name="importTextBox" Margin="2" PreviewKeyDown="ImportData" AcceptsReturn="True" AcceptsTab="True" />
+		<ListBox x:Name="statusListBox" Grid.Row="1" Margin="2" />
+	</Grid>
+</Window>

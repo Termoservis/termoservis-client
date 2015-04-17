@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="TermoservisClient.Windows.Development.County.CountyView"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:users="clr-namespace:Termoservis.Data.Users;assembly=Termoservis.Data"
+			 xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 mc:Ignorable="d"
+			 d:DesignHeight="374" d:DesignWidth="300" 
+			 DataContext="{Binding Source={StaticResource ViewModelProvider}, Path=CountyViewModel}">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+
+		<ComboBox ToolTip="Country list"
+				  ItemsSource="{Binding Countries}" 
+				  SelectedItem="{Binding SelectedCountry, BindsDirectlyToSource=False}" 
+				  Grid.ColumnSpan="2" Margin="3">
+			<ComboBox.ItemTemplate>
+				<DataTemplate DataType="{x:Type users:Country}">
+					<Label Content="{Binding Name}" />
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+		
+		<TextBox Text="{Binding Name}"
+				 mahapps:TextboxHelper.Watermark="Name"
+				 VerticalContentAlignment="Center"
+				 Grid.Row="1" Grid.Column="0" Margin="3" 
+				 PreviewKeyDown="AcceptNewCounty" />
+		<TextBox Text="{Binding Callcode}"
+				 mahapps:TextboxHelper.Watermark="Callcode"
+				 VerticalContentAlignment="Center"
+				 Grid.Row="1" Grid.Column="1" Margin="3" 
+				 PreviewKeyDown="AcceptNewCounty" />
+		
+		<ListBox ToolTip="County list" 
+				 ItemsSource="{Binding Counties}" 
+				 SelectedItem="{Binding SelectedItem}"
+				 Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="3" 
+				 PreviewKeyDown="RemoveCounty">
+			<ListBox.ItemTemplate>
+				<DataTemplate DataType="{x:Type users:County}">
+					<StackPanel Orientation="Horizontal">
+						<Label Content="{Binding Name}" Width="150" BorderThickness="0,0,1,0" BorderBrush="LightGray" />
+						<Label Content="{Binding CallCode}" />
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+	</Grid>
+</UserControl>
