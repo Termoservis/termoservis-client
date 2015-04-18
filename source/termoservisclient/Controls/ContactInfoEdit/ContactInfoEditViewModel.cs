@@ -41,7 +41,14 @@ namespace TermoservisClient.Controls {
 		}
 
 		private async void Load() {
-			await this.AvailableCountries.AddRangeSafeAsync(this.usersDataServiceFacade.DataContainer.CountrySet);
+			try
+			{
+				await this.AvailableCountries.AddRangeSafeAsync(this.usersDataServiceFacade.DataContainer.CountrySet);
+			}
+			catch (Exception)
+			{
+				System.Diagnostics.Debug.WriteLine("Unable to load list of available countries.");
+			}
 		}
 
 

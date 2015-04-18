@@ -4,7 +4,7 @@
 					 xmlns:Windows="clr-namespace:TermoservisClient.Windows" 
 					 xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
 					 Title="Termoservis" Height="500" Width="740" 
-					 SaveWindowPosition="True" GlowBrush="{StaticResource AccentColorBrush}"
+					 SaveWindowPosition="True"
 					 Icon="/Resources/Images/Login User White.png"
 					 DataContext="{Binding Source={StaticResource ViewModelProvider}, Path=HomeViewModel}"
 					 Loaded="HomeWindowLoaded"
@@ -13,28 +13,30 @@
 		<TaskbarItemInfo ProgressState="{Binding HomeProgressState}" />
 	</Window.TaskbarItemInfo>
 	
-	<mahapps:MetroWindow.WindowCommands>
+	<mahapps:MetroWindow.RightWindowCommands>
 		<mahapps:WindowCommands>
 			<Button Content="postavke" Click="ShowSettingsClick" />
 		</mahapps:WindowCommands>
-	</mahapps:MetroWindow.WindowCommands>
+	</mahapps:MetroWindow.RightWindowCommands>
 	
 	<mahapps:MetroWindow.Flyouts>
-		<mahapps:Flyout Header="postavke" Position="Right" IsOpen="{Binding ShowSettingsFlyout}">
-			<ScrollViewer>
-				<Grid Margin="24,0,24,24" Width="240">
-					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="*" />
-					</Grid.RowDefinitions>
-					<TextBlock Grid.Row="0" Text="Server (server instance name)" FontSize="16" Opacity="0.65" Margin="0, 8" />
-					<TextBox Grid.Row="1" Text="{Binding ServerInstanceName, Mode=TwoWay}" />
-					<TextBlock Grid.Row="2" Text="Nakon promjene ove postavke, potrebno je ponovno pokrenuti aplikaciju da bi stupila na snagu." TextWrapping="Wrap" Opacity="0.5" Margin="0, 8" />
-				</Grid>
-			</ScrollViewer>
-		</mahapps:Flyout>
+		<mahapps:FlyoutsControl>
+			<mahapps:Flyout Header="postavke" Position="Right" IsOpen="{Binding ShowSettingsFlyout}">
+				<ScrollViewer>
+					<Grid Margin="24,0,24,24" Width="240">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						<TextBlock Grid.Row="0" Text="Server (server instance name)" FontSize="16" Opacity="0.65" Margin="0, 8" />
+						<TextBox Grid.Row="1" Text="{Binding ServerInstanceName, Mode=TwoWay}" />
+						<TextBlock Grid.Row="2" Text="Nakon promjene ove postavke, potrebno je ponovno pokrenuti aplikaciju da bi stupila na snagu." TextWrapping="Wrap" Opacity="0.5" Margin="0, 8" />
+					</Grid>
+				</ScrollViewer>
+			</mahapps:Flyout>
+		</mahapps:FlyoutsControl>
 	</mahapps:MetroWindow.Flyouts>
 	
 	<!-- Windows content -->

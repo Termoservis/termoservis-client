@@ -16,19 +16,21 @@ namespace TermoservisClient {
 		public App() {
 			Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
 
-			this.AppVersion =
-				System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString();
-
-			Task.Run(() => this.Initialize());
+			this.AppVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
 		}
 
 
-		public void Initialize() {
-			// Set application theme
-			var accent = ThemeManager.DefaultAccents.First(a => a.Name == "Red");
-			ThemeManager.ChangeTheme(this, accent, Theme.Light);
+		protected override void OnStartup(StartupEventArgs e)
+		{
+			// Set application style
+			ThemeManager.ChangeAppStyle(
+				Application.Current,
+				ThemeManager.GetAccent("Red"),
+				ThemeManager.GetAppTheme("BaseLight"));
+
+			base.OnStartup(e);
 		}
-		
+
 		#region Properties
 
 		public static event AppStateEventHandler OnStateChanged;

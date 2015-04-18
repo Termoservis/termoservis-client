@@ -55,10 +55,10 @@
 					<TextBlock Text="0" FontSize="16" Foreground="{StaticResource AccentColorBrush}" Visibility="{Binding HasAccounts, Converter={StaticResource InvertedBoolToVisibilityConverter}}" />
 				</StackPanel>
 				<mahapps:RangeSlider Margin="5,3" Height="25"
-									 RangeStart="{Binding AccountNumberMin}" 
-									 RangeStop="{Binding AccountNumberMax}" 
-									 RangeStartSelected="{Binding AccountNumberFrom, Mode=TwoWay}" 
-									 RangeStopSelected="{Binding AccountNumberTo, Mode=TwoWay}" />
+									 Maximum="{Binding AccountNumberMin}" 
+									 Minimum="{Binding AccountNumberMax}" 
+									 LowerValue="{Binding AccountNumberFrom, Mode=TwoWay}" 
+									 UpperValue="{Binding AccountNumberTo, Mode=TwoWay}" />
 			</StackPanel>
 
 			<mahapps:ToggleSwitch Grid.Row="2" Grid.Column="0" IsChecked="{Binding FilterByStore}" Header="Filtriraj prema prodajnom mjestu" OnLabel="Da" OffLabel="Ne" />

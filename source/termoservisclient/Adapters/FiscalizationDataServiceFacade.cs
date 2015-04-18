@@ -36,7 +36,7 @@ namespace TermoservisClient.Adapters {
 			}
 			catch (Exception ex) {
 				System.Diagnostics.Debug.WriteLine(
-					"Unable to open connection to Fiscalization Database\n{0}", ex.Message);
+					"Unable to open connection to Fiscalization Database\n{0}", (object)ex.Message);
 			}
 		}
 

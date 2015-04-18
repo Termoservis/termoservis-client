@@ -18,12 +18,12 @@
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
 		<TextBox Text="{Binding Name}"
-				 mahapps:TextboxHelper.Watermark="Name"
+				 mahapps:TextBoxHelper.Watermark="Name"
 				 VerticalContentAlignment="Center"
 				 Grid.Row="0" Grid.Column="0" Margin="3" 
 				 PreviewKeyDown="AcceptNewCountry" />
 		<TextBox Text="{Binding Callcode}"
-				 mahapps:TextboxHelper.Watermark="Callcode"
+				 mahapps:TextBoxHelper.Watermark="Callcode"
 				 VerticalContentAlignment="Center"
 				 Grid.Row="0" Grid.Column="1" Margin="3" 
 				 PreviewKeyDown="AcceptNewCountry" />
